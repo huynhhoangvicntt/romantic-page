@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Instant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 500px;
+        }
+
+        .heart {
+            font-size: 50px;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .qr-container {
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .qr-image {
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 5px solid #ff6b6b;
+        }
+
+        .heart-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25px;
+            background: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .url-display {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 14px;
+            word-break: break-all;
+            color: #666;
+        }
+
+        .instructions {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart">💖</div>
+        <h1>QR Code Hình Trái Tim</h1>
+
+        <div class="url-display">
+            https://huynhhoangvicntt.github.io/romantic-page
+        </div>
+
+        <div class="qr-container">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A//huynhhoangvicntt.github.io/romantic-page&color=d63384&bgcolor=ffffff&margin=10&ecc=M"
+                 alt="QR Code"
+                 class="qr-image"
+                 id="qrImage">
+            <div class="heart-overlay">💕</div>
+        </div>
+
+        <button class="download-btn" onclick="downloadQR()">📱 Tải QR Code</button>
+        <button class="download-btn" onclick="testQR()">🔍 Test QR Code</button>
+
+        <div class="instructions">
+            <strong>📋 Hướng dẫn sử dụng:</strong><br>
+            1. <strong>Click "Tải QR Code"</strong> để lưu về điện thoại<br>
+            2. <strong>In ra giấy</strong> hoặc gửi qua chat<br>
+            3. <strong>Hướng dẫn người nhận:</strong> Mở camera điện thoại → chĩa vào QR code<br>
+            4. <strong>Hoặc dùng app quét QR</strong> như Zalo, Facebook, Google Lens<br><br>
+
+            <strong>💡 Tip:</strong> Click "Test QR Code" để kiểm tra trước khi tặng!
+        </div>
+    </div>
+
+    <script>
+        function downloadQR() {
+            const qrImage = document.getElementById('qrImage');
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = 300;
+            canvas.height = 300;
+
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = function() {
+                // Draw QR code
+                ctx.drawImage(img, 0, 0, 300, 300);
+
+                // Add heart in center
+                ctx.font = '30px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'white';
+                ctx.fillRect(135, 135, 30, 30);
+                ctx.fillStyle = '#ff6b6b';
+                ctx.fillText('💕', 150, 158);
+
+                // Download
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'qr-code-trai-tim.png';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                });
+            };
+            img.src = qrImage.src;
+        }
+
+        function testQR() {
+            window.open('https://huynhhoangvicntt.github.io/romantic-page', '_blank');
+        }
+
+        // Auto-focus on download button
+        window.addEventListener('load', function() {
+            document.querySelector('.download-btn').focus();
+        });
+    </script>
+</body>
+</html>
