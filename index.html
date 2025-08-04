@@ -3,351 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dành Cho Em ❤️</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>Dành Cho Em - Cự Giải Xinh Đẹp 🦀💖</title>
 
-        body {
-            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            font-family: 'Arial', sans-serif;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 
-        .container {
-            text-align: center;
-            z-index: 10;
-            position: relative;
-            animation: fadeInUp 2s ease-out;
-        }
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦀</text></svg>">
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .heart {
-            color: #ff4757;
-            font-size: 80px;
-            animation: heartbeat 1.5s ease-in-out infinite;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(255, 71, 87, 0.5);
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        .main-title {
-            font-size: 3em;
-            color: #2c2c54;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            animation: textGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes textGlow {
-            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
-            to { text-shadow: 2px 2px 20px rgba(255, 71, 87, 0.3); }
-        }
-
-        .subtitle {
-            font-size: 1.5em;
-            color: #40407a;
-            margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeIn 3s ease-in-out 1s forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        .message {
-            font-size: 1.2em;
-            color: #2c2c54;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            line-height: 1.6;
-            opacity: 0;
-            animation: fadeIn 3s ease-in-out 2s forwards;
-        }
-
-        .btn-container {
-            opacity: 0;
-            animation: fadeIn 3s ease-in-out 3s forwards;
-        }
-
-        .love-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-            margin: 0 10px;
-        }
-
-        .love-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
-        }
-
-        /* Floating hearts animation */
-        .floating-hearts {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .floating-heart {
-            position: absolute;
-            color: rgba(255, 71, 87, 0.7);
-            animation: float 6s infinite linear;
-            font-size: 20px;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Fireworks effect */
-        .fireworks {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            animation: firework 1s ease-out infinite;
-        }
-
-        @keyframes firework {
-            0% {
-                transform: translate(-50%, -50%) scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(20);
-                opacity: 0;
-            }
-        }
-
-        .firework1 { background: #ff6b6b; animation-delay: 0s; }
-        .firework2 { background: #4ecdc4; animation-delay: 0.5s; }
-        .firework3 { background: #45b7d1; animation-delay: 1s; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .main-title { font-size: 2em; }
-            .heart { font-size: 60px; }
-            .subtitle { font-size: 1.2em; }
-            .message { font-size: 1em; padding: 0 20px; }
-        }
-
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            animation: modalFadeIn 0.5s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background: linear-gradient(45deg, #ff9a9e, #fecfef);
-            margin: 15% auto;
-            padding: 40px;
-            border-radius: 20px;
-            width: 80%;
-            max-width: 500px;
-            text-align: center;
-            animation: modalSlideIn 0.5s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        @keyframes modalSlideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .close:hover { color: #000; }
-    </style>
+    <!-- Meta tags for social sharing -->
+    <meta property="og:title" content="Dành Cho Em - Cự Giải Xinh Đẹp">
+    <meta property="og:description" content="Một thông điệp đặc biệt dành cho cung Cự Giải đáng yêu">
+    <meta property="og:image" content="https://huynhhoangvicntt.github.io/romantic-page/assets/preview.jpg">
+    <meta name="description" content="Trang web lãng mạn dành riêng cho cung Cự Giải - những người nhạy cảm, dịu dàng và đầy tình yêu thương">
 </head>
 <body>
-    <div class="floating-hearts"></div>
-
-    <div class="container">
-        <div class="heart">💖</div>
-        <h1 class="main-title">Dành Cho Em Yêu</h1>
-        <p class="subtitle">Một thông điệp đặc biệt từ trái tim anh</p>
-
-        <div class="message">
-            Em có biết không? Mỗi khi nhìn thấy em, trái tim anh lại đập thật nhanh.
-            Em như ánh sáng trong cuộc đời anh, làm cho mọi thứ trở nên ý nghĩa hơn.
-            Anh muốn được ở bên em, che chở và yêu thương em mãi mãi. ❤️
-        </div>
-
-        <div class="btn-container">
-            <button class="love-btn" onclick="showSurprise()">Nhấn vào đây nè! 💕</button>
-        </div>
-    </div>
-
-    <!-- Fireworks -->
-    <div class="fireworks firework1" style="top: 20%; left: 20%;"></div>
-    <div class="fireworks firework2" style="top: 30%; left: 80%;"></div>
-    <div class="fireworks firework3" style="top: 70%; left: 30%;"></div>
-
-    <!-- Modal -->
-    <div id="surpriseModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div class="heart" style="font-size: 60px;">💝</div>
-            <h2 style="color: #2c2c54; margin: 20px 0;">Surprise!</h2>
-            <p style="color: #40407a; font-size: 1.1em; line-height: 1.6;">
-                Cảm ơn em đã quét mã QR này!
-                <br><br>
-                Đây là lời tỏ tình chân thành nhất của anh.
-                Em có đồng ý làm người yêu anh không? 🥰
-            </p>
-            <div style="margin-top: 20px;">
-                <button class="love-btn" onclick="acceptLove()">Đồng ý! 💕</button>
-                <button class="love-btn" onclick="closeModal()" style="background: linear-gradient(45deg, #74b9ff, #0984e3);">Để anh suy nghĩ 😊</button>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="cancer-constellation">
+                <div class="star star-1">✨</div>
+                <div class="star star-2">⭐</div>
+                <div class="star star-3">💫</div>
+                <div class="star star-4">✨</div>
+            </div>
+            <div class="loading-text">
+                <span class="cancer-symbol">♋</span>
+                <p>Đang chuẩn bị thông điệp đặc biệt...</p>
             </div>
         </div>
     </div>
 
-    <script>
-        // Create floating hearts
-        function createFloatingHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'floating-heart';
-            heart.innerHTML = '💖';
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            heart.style.opacity = Math.random() * 0.5 + 0.3;
+    <!-- Background Elements -->
+    <div class="background-elements">
+        <div class="moon-phases">
+            <div class="moon new-moon">🌑</div>
+            <div class="moon crescent-moon">🌙</div>
+            <div class="moon full-moon">🌕</div>
+        </div>
+        <div class="floating-elements"></div>
+        <div class="water-ripples">
+            <div class="ripple ripple-1"></div>
+            <div class="ripple ripple-2"></div>
+            <div class="ripple ripple-3"></div>
+        </div>
+    </div>
 
-            document.querySelector('.floating-hearts').appendChild(heart);
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="logo">
+                <span class="cancer-icon">🦀</span>
+                <span class="logo-text">Cancer Love</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Trang chủ</a>
+                <a href="#message" class="nav-link">Thông điệp</a>
+                <a href="#traits" class="nav-link">Về em</a>
+                <a href="#surprise" class="nav-link">Surprise</a>
+            </div>
+        </div>
+    </nav>
 
-            setTimeout(() => {
-                heart.remove();
-            }, 6000);
-        }
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="zodiac-intro">
+                        <div class="zodiac-symbol">♋</div>
+                        <p class="zodiac-date">22/6 - 22/7</p>
+                    </div>
 
-        // Create hearts every 500ms
-        setInterval(createFloatingHeart, 500);
+                    <h1 class="hero-title">
+                        <span class="title-line-1">Dành Cho Em</span>
+                        <span class="title-line-2">Cự Giải Xinh Đẹp</span>
+                    </h1>
 
-        // Show surprise modal
-        function showSurprise() {
-            document.getElementById('surpriseModal').style.display = 'block';
-            createFireworks();
-        }
+                    <p class="hero-subtitle">
+                        Những người sinh dưới cung Cự Giải luôn mang trong mình sự dịu dàng,
+                        lòng trắc ẩn và tình yêu thương vô bờ bến
+                    </p>
 
-        // Close modal
-        function closeModal() {
-            document.getElementById('surpriseModal').style.display = 'none';
-        }
+                    <div class="hero-cta">
+                        <button class="cta-button primary" onclick="scrollToSection('message')">
+                            <span class="btn-text">Đọc thông điệp</span>
+                            <span class="btn-icon">💌</span>
+                        </button>
+                        <button class="cta-button secondary" onclick="playMusic()">
+                            <span class="btn-text">Phát nhạc</span>
+                            <span class="btn-icon">🎵</span>
+                        </button>
+                    </div>
+                </div>
 
-        // Accept love function
-        function acceptLove() {
-            alert('Yayyy! Anh yêu em nhiều lắm! 💕💕💕');
-            closeModal();
-            // Create more hearts
-            for(let i = 0; i < 20; i++) {
-                setTimeout(createFloatingHeart, i * 100);
-            }
-        }
+                <div class="hero-visual">
+                    <div class="cancer-illustration">
+                        <div class="crab-container">
+                            <div class="crab-body">🦀</div>
+                            <div class="love-aura"></div>
+                        </div>
+                        <div class="element-water">
+                            <div class="water-drop">💧</div>
+                            <div class="water-drop">💧</div>
+                            <div class="water-drop">💧</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        // Create fireworks effect
-        function createFireworks() {
-            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b'];
+        <!-- Message Section -->
+        <section id="message" class="message-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Thông Điệp Từ Trái Tim</h2>
+                    <div class="title-decoration">
+                        <span class="decoration-element">🌙</span>
+                        <span class="decoration-line"></span>
+                        <span class="decoration-element">💙</span>
+                        <span class="decoration-line"></span>
+                        <span class="decoration-element">🌙</span>
+                    </div>
+                </div>
 
-            for(let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    const firework = document.createElement('div');
-                    firework.className = 'fireworks';
-                    firework.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    firework.style.top = Math.random() * 100 + '%';
-                    firework.style.left = Math.random() * 100 + '%';
-                    firework.style.animationDelay = '0s';
+                <div class="message-content">
+                    <div class="message-card main-message">
+                        <div class="card-header">
+                            <span class="card-icon">💌</span>
+                            <h3>Gửi Em - Người Cự Giải Đáng Yêu</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="message-text">
+                                Em có biết không? Giống như mặt trăng chi phối thủy triều,
+                                em đã làm trái tim anh dao động theo từng cảm xúc của em.
+                                Sự dịu dàng và nhạy cảm của em không phải là điểm yếu,
+                                mà chính là điều khiến anh say đắm.
+                            </p>
+                            <p class="message-text">
+                                Như con cua bảo vệ chiếc vỏ mềm mại bên trong,
+                                anh muốn trở thành nơi an toàn để em có thể thoải mái
+                                thể hiện tất cả cảm xúc chân thực nhất.
+                            </p>
+                            <div class="signature">
+                                <span class="signature-text">Với tất cả tình yêu</span>
+                                <span class="signature-heart">💙</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    document.body.appendChild(firework);
+        <!-- Cancer Traits Section -->
+        <section id="traits" class="traits-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Vì Sao Anh Yêu Em</h2>
+                    <p class="section-subtitle">Những đặc điểm tuyệt vời của cung Cự Giải</p>
+                </div>
 
-                    setTimeout(() => {
-                        firework.remove();
-                    }, 1000);
-                }, i * 200);
-            }
-        }
+                <div class="traits-grid">
+                    <div class="trait-card" data-trait="caring">
+                        <div class="trait-icon">🤗</div>
+                        <h3 class="trait-title">Quan Tâm</h3>
+                        <p class="trait-description">
+                            Em luôn quan tâm đến mọi người xung quanh với tình yêu thương chân thành
+                        </p>
+                    </div>
 
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('surpriseModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
+                    <div class="trait-card" data-trait="intuitive">
+                        <div class="trait-icon">🔮</div>
+                        <h3 class="trait-title">Trực Giác</h3>
+                        <p class="trait-description">
+                            Trực giác nhạy bén giúp em hiểu được cảm xúc của người khác
+                        </p>
+                    </div>
 
-        // Add some interactive effects
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.modal') && !e.target.closest('.love-btn')) {
-                createFloatingHeart();
-            }
-        });
-    </script>
+                    <div class="trait-card" data-trait="loyal">
+                        <div class="trait-icon">💙</div>
+                        <h3 class="trait-title">Trung Thành</h3>
+                        <p class="trait-description">
+                            Khi yêu, em yêu hết mình và luôn trân trọng những mối quan hệ
+                        </p>
+                    </div>
+
+                    <div class="trait-card" data-trait="emotional">
+                        <div class="trait-icon">🌊</div>
+                        <h3 class="trait-title">Cảm Xúc Phong Phú</h3>
+                        <p class="trait-description">
+                            Cảm xúc sâu sắc khiến em trở nên chân thành và đáng yêu
+                        </p>
+                    </div>
+
+                    <div class="trait-card" data-trait="protective">
+                        <div class="trait-icon">🛡️</div>
+                        <h3 class="trait-title">Bảo Vệ</h3>
+                        <p class="trait-description">
+                            Em luôn bảo vệ những người em yêu thương như bảo vệ gia đình
+                        </p>
+                    </div>
+
+                    <div class="trait-card" data-trait="creative">
+                        <div class="trait-icon">🎨</div>
+                        <h3 class="trait-title">Sáng Tạo</h3>
+                        <p class="trait-description">
+                            Trí tưởng tượng phong phú giúp em nhìn thế giới theo cách đặc biệt
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Surprise Section -->
+        <section id="surprise" class="surprise-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Surprise Đặc Biệt</h2>
+                    <p class="section-subtitle">Dành riêng cho em</p>
+                </div>
+
+                <div class="surprise-content">
+                    <div class="surprise-reveal">
+                        <button id="surpriseBtn" class="surprise-button">
+                            <span class="btn-shell">🐚</span>
+                            <span class="btn-text">Mở surprise</span>
+                        </button>
+                    </div>
+
+                    <div id="surpriseModal" class="surprise-modal">
+                        <div class="modal-overlay"></div>
+                        <div class="modal-content">
+                            <button class="modal-close" onclick="closeSurprise()">&times;</button>
+                            <div class="modal-body">
+                                <div class="surprise-animation">
+                                    <div class="hearts-explosion">
+                                        <div class="heart">💙</div>
+                                        <div class="heart">💙</div>
+                                        <div class="heart">💙</div>
+                                        <div class="heart">💙</div>
+                                        <div class="heart">💙</div>
+                                    </div>
+                                </div>
+                                <div class="surprise-message">
+                                    <h3>Em có đồng ý...</h3>
+                                    <p>Làm người yêu anh không?</p>
+                                    <div class="surprise-options">
+                                        <button class="option-btn accept" onclick="acceptLove()">
+                                            Đồng ý! 💙
+                                        </button>
+                                        <button class="option-btn think" onclick="needTime()">
+                                            Để em suy nghĩ 🤔
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-message">
+                <p>Được tạo với 💙 dành riêng cho cung Cự Giải xinh đẹp</p>
+            </div>
+            <div class="footer-zodiac">
+                <span class="zodiac-symbol">♋</span>
+                <span class="element-symbol">🌊</span>
+                <span class="planet-symbol">🌙</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" preload="auto" loop>
+        <source src="assets/romantic-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
 </body>
 </html>
