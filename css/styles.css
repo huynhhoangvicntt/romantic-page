@@ -10,7 +10,12 @@ body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #764ba2 100%);
     min-height: 100vh;
+    min-height: 100dvh;
     overflow-x: hidden;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 /* Background */
@@ -25,6 +30,7 @@ body {
     overflow: hidden;
 }
 
+/* Desktop layout */
 .moon {
     position: absolute;
     top: 10%;
@@ -41,7 +47,7 @@ body {
     animation: twinkle 2s ease-in-out infinite;
 }
 
-/* PNG Image decorations */
+/* PNG Image decorations - Desktop */
 .image-decoration {
     position: absolute;
     pointer-events: none;
@@ -71,12 +77,12 @@ body {
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
 }
 
-/* Avatar bạn gái 1 - Góc trên phải */
+/* Avatar bạn gái - Desktop */
 .girlfriend-avatar-1 {
     top: 15%;
     right: 20%;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     border: 3px solid rgba(255, 182, 193, 0.8);
     animation: pulse 4s ease-in-out infinite;
@@ -84,10 +90,9 @@ body {
     object-fit: cover;
 }
 
-/* Avatar bạn gái 2 - Bên trái giữa */
 .girlfriend-avatar-2 {
     top: 45%;
-    left: 18%;
+    left: 20%;
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -97,12 +102,11 @@ body {
     object-fit: cover;
 }
 
-/* Avatar bạn gái 3 - Bên phải giữa */
 .girlfriend-avatar-3 {
     top: 55%;
-    right: 18%;
-    width: 90px;
-    height: 90px;
+    right: 25%;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     border: 3px solid rgba(255, 20, 147, 0.8);
     animation: bounce-gentle 5s ease-in-out infinite;
@@ -110,66 +114,17 @@ body {
     object-fit: cover;
 }
 
-/* Avatar bạn gái 4 - Dưới giữa */
 .girlfriend-avatar-4 {
-    bottom: 7%;
+    bottom: 6%;
     left: 50%;
     transform: translateX(-50%);
-    width: 85px;
-    height: 85px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     border: 3px solid rgba(255, 192, 203, 0.9);
     animation: gentle-glow 4s ease-in-out infinite;
     filter: drop-shadow(0 0 18px rgba(255, 192, 203, 0.7));
     object-fit: cover;
-}
-
-/* Thêm các animation mới cho avatar */
-@keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-        border-color: rgba(255, 105, 180, 0.8);
-    }
-    25% {
-        transform: scale(1.1);
-        border-color: rgba(255, 105, 180, 1);
-    }
-    50% {
-        transform: scale(1.05);
-        border-color: rgba(255, 105, 180, 0.9);
-    }
-}
-
-@keyframes bounce-gentle {
-    0%, 100% {
-        transform: translateY(0px) scale(1);
-    }
-    50% {
-        transform: translateY(-8px) scale(1.02);
-    }
-}
-
-@keyframes gentle-glow {
-    0%, 100% {
-        transform: translateX(-50%) scale(1);
-        border-color: rgba(255, 192, 203, 0.9);
-        filter: drop-shadow(0 0 18px rgba(255, 192, 203, 0.7));
-    }
-    25% {
-        transform: translateX(-50%) scale(1.02);
-        border-color: rgba(255, 192, 203, 1);
-        filter: drop-shadow(0 0 25px rgba(255, 192, 203, 0.9));
-    }
-    50% {
-        transform: translateX(-50%) scale(1.05);
-        border-color: rgba(255, 182, 193, 1);
-        filter: drop-shadow(0 0 30px rgba(255, 182, 193, 1));
-    }
-    75% {
-        transform: translateX(-50%) scale(1.02);
-        border-color: rgba(255, 192, 203, 1);
-        filter: drop-shadow(0 0 25px rgba(255, 192, 203, 0.9));
-    }
 }
 
 /* Bánh trung thu */
@@ -192,51 +147,58 @@ body {
     filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.3));
 }
 
+.lantern-img-4 {
+    bottom: 10%;
+    right: 20%;
+    width: 120px;
+    height: auto;
+    animation: hop 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
+
 .lantern-img-2 {
-    top: 30%;
-    right: 8%;
-    width: 75px;
+    top: 70%;
+    right: 80%;
+    width: 90px;
     height: auto;
     animation: sway 4s ease-in-out infinite;
     animation-delay: 2s;
     filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.3));
 }
 
-/* Fallback emoji elements - ẩn khi có PNG */
+.lantern-img-3 {
+    top: 25%;
+    right: 8%;
+    width: 60px;
+    height: auto;
+    animation: sway 4s ease-in-out infinite;
+    animation-delay: 2s;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.3));
+}
+
+/* Fallback emoji elements */
 .emoji-fallback {
     position: absolute;
     font-size: 35px;
     z-index: 1;
 }
 
-/* Nếu có PNG thì ẩn emoji fallback */
 .chang-e-img:not([style*="display: none"]) ~ .chang-e.emoji-fallback,
 .jade-rabbit-img:not([style*="display: none"]) ~ .chu-cuoi.emoji-fallback,
 .mooncake-img:not([style*="display: none"]) ~ .mooncake.emoji-fallback {
     display: none;
 }
 
-/* Thêm animation pulse cho avatar */
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
-    }
-}
-/* Mid-Autumn decorative elements (emoji fallbacks) */
+/* Decorative elements (emoji fallbacks) - Desktop */
 .lantern {
     position: absolute;
-    font-size: 40px;
+    font-size: 50px;
     animation: sway 4s ease-in-out infinite;
 }
 
 .lantern-1 {
-    top: 15%;
-    left: 8%;
+    top: 10%;
+    left: 20%;
     animation-delay: 0s;
 }
 
@@ -296,7 +258,7 @@ body {
     animation-delay: 1.5s;
 }
 
-/* Animations for decorative elements */
+/* Animations */
 @keyframes glow {
     0%, 100% { opacity: 0.8; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.1); }
@@ -333,7 +295,65 @@ body {
     50% { opacity: 1; transform: scale(1.3); }
 }
 
-/* Fireworks container */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+        border-color: rgba(255, 105, 180, 0.8);
+    }
+    25% {
+        transform: scale(1.1);
+        border-color: rgba(255, 105, 180, 1);
+    }
+    50% {
+        transform: scale(1.05);
+        border-color: rgba(255, 105, 180, 0.9);
+    }
+}
+
+@keyframes bounce-gentle {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+    }
+    50% {
+        transform: translateY(-8px) scale(1.02);
+    }
+}
+
+@keyframes gentle-glow {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        border-color: rgba(255, 192, 203, 0.9);
+        filter: drop-shadow(0 0 18px rgba(255, 192, 203, 0.7));
+    }
+    25% {
+        transform: translateX(-50%) scale(1.02);
+        border-color: rgba(255, 192, 203, 1);
+        filter: drop-shadow(0 0 25px rgba(255, 192, 203, 0.9));
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+        border-color: rgba(255, 182, 193, 1);
+        filter: drop-shadow(0 0 30px rgba(255, 182, 193, 1));
+    }
+    75% {
+        transform: translateX(-50%) scale(1.02);
+        border-color: rgba(255, 192, 203, 1);
+        filter: drop-shadow(0 0 25px rgba(255, 192, 203, 0.9));
+    }
+}
+
+/* Effects containers */
 #fireworks {
     position: fixed;
     top: 0;
@@ -352,7 +372,6 @@ body {
     animation: fireworkExplode 1s ease-out forwards;
 }
 
-/* Falling lanterns container */
 #falling-lanterns {
     position: fixed;
     top: 0;
@@ -369,7 +388,6 @@ body {
     animation: fallDown 3s ease-in forwards;
 }
 
-/* Firework animation */
 @keyframes fireworkExplode {
     0% {
         opacity: 1;
@@ -385,7 +403,6 @@ body {
     }
 }
 
-/* Falling lantern animation */
 @keyframes fallDown {
     0% {
         opacity: 1;
@@ -558,172 +575,241 @@ h2 {
     transform: translateY(0);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .card {
-        padding: 30px 25px;
-        margin: 10px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.7rem;
-    }
-
-    .text, .question {
-        font-size: 1rem;
-    }
-
-    .moon {
-        font-size: 60px;
-        top: 5%;
-        right: 5%;
-    }
-
-    .stars {
-        font-size: 20px;
-    }
-
-    .emoji {
-        font-size: 2rem;
-    }
-
-    /* Scale down decorative elements on mobile */
-    .lantern {
-        font-size: 30px;
-    }
-
-    .chang-e.emoji-fallback, .chu-cuoi.emoji-fallback, .mooncake.emoji-fallback {
-        font-size: 25px;
-    }
-
-    .bamboo {
-        font-size: 35px;
-    }
-
-    .sparkles {
-        font-size: 16px;
-    }
-
-    .falling-lantern {
-        font-size: 24px;
-    }
-
-    /* Scale down PNG images on mobile */
-    .chang-e-img {
-        width: 80px;
-    }
-
-    .jade-rabbit-img {
-        width: 70px;
-    }
-
-    .girlfriend-avatar-1 {
-        width: 60px;
-        height: 60px;
-    }
-
-    .girlfriend-avatar-2 {
-        width: 55px;
-        height: 55px;
-    }
-
-    .girlfriend-avatar-3 {
-        width: 50px;
-        height: 50px;
-    }
-
-    .girlfriend-avatar-4 {
-        width: 65px;
-        height: 65px;
-    }
-
-    .mooncake-img {
-        width: 65px;
-    }
-
-    .lantern-img-1, .lantern-img-2 {
-        width: 50px;
-    }
-}
-
-@media (max-width: 480px) {
-    .card {
-        padding: 25px 20px;
-    }
-
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    .btn {
-        font-size: 1rem;
-        padding: 12px 25px;
-    }
-
-    .btn-option {
-        font-size: 0.9rem;
-        padding: 12px 15px;
-    }
-
-    /* Further scale down on very small screens */
-    .lantern {
-        font-size: 25px;
-    }
-
-    .chang-e.emoji-fallback, .chu-cuoi.emoji-fallback, .mooncake.emoji-fallback {
-        font-size: 20px;
-    }
-
-    .bamboo {
-        font-size: 28px;
-    }
-
-    .sparkles {
+/* iPhone 15 Responsive - Tối ưu layout để không che elements */
+@media (max-width: 430px) {
+    body {
         font-size: 14px;
     }
 
-    .falling-lantern {
-        font-size: 20px;
+    .container {
+        padding: 5px;
+        min-height: 100vh;
+        min-height: 100dvh;
     }
 
-    /* Further scale down PNG images */
-    .chang-e-img {
-        width: 60px;
+    .card {
+        padding: 15px 12px;
+        margin: 8px;
+        max-width: calc(100vw - 16px);
+        border-radius: 12px;
+        max-height: 65vh;
+        overflow-y: auto;
     }
 
-    .jade-rabbit-img {
-        width: 55px;
+    /* Typography iPhone */
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+        line-height: 1.2;
     }
 
+    h2 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+
+    .text {
+        font-size: 0.85rem;
+        line-height: 1.3;
+        margin-bottom: 6px;
+    }
+
+    .question {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+        line-height: 1.3;
+    }
+
+    .romantic {
+        font-size: 0.85rem;
+        line-height: 1.3;
+        margin-bottom: 6px;
+    }
+
+    .romantic.big {
+        font-size: 0.95rem;
+        margin: 8px 0;
+        line-height: 1.2;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+        margin-top: 10px;
+        border-radius: 20px;
+        min-width: 140px;
+    }
+
+    .btn-option {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+        margin-bottom: 6px;
+        border-radius: 8px;
+        line-height: 1.2;
+    }
+
+    .emoji {
+        font-size: 1.2rem;
+        margin: 8px 0;
+    }
+
+    /* Music button iPhone */
+    .music-btn {
+        top: max(10px, env(safe-area-inset-top));
+        left: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    /* Background elements iPhone - Repositioned to avoid form overlap */
+    .moon {
+        font-size: 30px;
+        top: max(1%, calc(env(safe-area-inset-top) + 1%));
+        right: 1%;
+    }
+
+    .stars {
+        font-size: 12px;
+        top: max(5%, calc(env(safe-area-inset-top) + 5%));
+        left: 5%;
+    }
+
+    /* Decorative elements iPhone - Moved to edges */
+    .lantern {
+        font-size: 18px;
+    }
+
+    .lantern-1 {
+        top: max(12%, calc(env(safe-area-inset-top) + 12%));
+        left: 5%;
+    }
+
+    .lantern-2 {
+        top: 20%;
+        right: 10%;
+    }
+
+    .chu-cuoi.emoji-fallback {
+        bottom: max(12%, calc(env(safe-area-inset-bottom) + 12%));
+        right: 1%;
+        font-size: 14px;
+    }
+
+    .mooncake.emoji-fallback {
+        bottom: max(25%, calc(env(safe-area-inset-bottom) + 25%));
+        left: 10%;
+        font-size: 14px;
+    }
+
+    .chang-e.emoji-fallback {
+        top: 12%;
+        left: 1%;
+        font-size: 16px;
+    }
+
+    .bamboo {
+        top: 25%;
+        right: 1%;
+        font-size: 30px;
+    }
+
+    .sparkles {
+        font-size: 8px;
+    }
+
+    .sparkle-1 {
+        top: 70%;
+        left: 15%;
+    }
+
+    .sparkle-2 {
+        top: 25%;
+        left: 85%;
+    }
+
+    .sparkle-3 {
+        bottom: max(50%, calc(env(safe-area-inset-bottom) + 50%));
+        left: 75%;
+    }
+
+    /* Avatar positions iPhone - Repositioned to visible areas */
     .girlfriend-avatar-1 {
-        width: 45px;
-        height: 45px;
+        top: max(6%, calc(env(safe-area-inset-top) + 2%));
+        right: 15%;
+        width: 100px;
+        height: 100px;
+        border-width: 2px;
     }
 
     .girlfriend-avatar-2 {
-        width: 42px;
-        height: 42px;
+        top: 20%;
+        left: 5%;
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
     }
 
     .girlfriend-avatar-3 {
-        width: 40px;
-        height: 40px;
+        top: 25%;
+        right: 22%;
+        width: 48px;
+        height: 48px;
+        border-width: 2px;
     }
 
     .girlfriend-avatar-4 {
-        width: 48px;
-        height: 48px;
+        bottom: max(5%, calc(env(safe-area-inset-bottom) + 5%));
+        width: 150px;
+        height: 150px;
+        border-width: 2px;
     }
 
-    .mooncake-img {
+    /* PNG images iPhone - Repositioned */
+    .chang-e-img {
+        top: 12%;
+        left: 28%;
         width: 50px;
     }
 
-    .lantern-img-1, .lantern-img-2 {
+    .jade-rabbit-img {
+        bottom: max(15%, calc(env(safe-area-inset-bottom) + 15%));
+        right: 2%;
+        width: 32px;
+    }
+
+    .mooncake-img {
+        bottom: max(18%, calc(env(safe-area-inset-bottom) + 18%));
+        left: 10%;
         width: 40px;
+    }
+
+    .lantern-img-1 {
+        top: max(8%, calc(env(safe-area-inset-top) + 8%));
+        left: 1%;
+        width: 22px;
+    }
+
+    .lantern-img-4 {
+        bottom: max(25%, calc(env(safe-area-inset-bottom) + 25%));
+        right: 15%;
+        width: 50px;
+    }
+
+    .lantern-img-2 {
+        top: 18%;
+        right: 0.5%;
+        width: 24px;
+    }
+
+    .lantern-img-3 {
+        top: 25%;
+        right: 50%;
+        width: 50px;
+    }
+
+    .falling-lantern {
+        font-size: 12px;
     }
 }
