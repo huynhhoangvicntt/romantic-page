@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dành Cho Em ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart {
+            color: #ff4757;
+            font-size: 80px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 71, 87, 0.5);
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .main-title {
+            font-size: 3em;
+            color: #2c2c54;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+            to { text-shadow: 2px 2px 20px rgba(255, 71, 87, 0.3); }
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #40407a;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .message {
+            font-size: 1.2em;
+            color: #2c2c54;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out 2s forwards;
+        }
+
+        .btn-container {
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out 3s forwards;
+        }
+
+        .love-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            margin: 0 10px;
+        }
+
+        .love-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        /* Floating hearts animation */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 71, 87, 0.7);
+            animation: float 6s infinite linear;
+            font-size: 20px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Fireworks effect */
+        .fireworks {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: firework 1s ease-out infinite;
+        }
+
+        @keyframes firework {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(20);
+                opacity: 0;
+            }
+        }
+
+        .firework1 { background: #ff6b6b; animation-delay: 0s; }
+        .firework2 { background: #4ecdc4; animation-delay: 0.5s; }
+        .firework3 { background: #45b7d1; animation-delay: 1s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title { font-size: 2em; }
+            .heart { font-size: 60px; }
+            .subtitle { font-size: 1.2em; }
+            .message { font-size: 1em; padding: 0 20px; }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            animation: modalFadeIn 0.5s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            margin: 15% auto;
+            padding: 40px;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            animation: modalSlideIn 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover { color: #000; }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts"></div>
+
+    <div class="container">
+        <div class="heart">💖</div>
+        <h1 class="main-title">Dành Cho Em Yêu</h1>
+        <p class="subtitle">Một thông điệp đặc biệt từ trái tim anh</p>
+
+        <div class="message">
+            Em có biết không? Mỗi khi nhìn thấy em, trái tim anh lại đập thật nhanh.
+            Em như ánh sáng trong cuộc đời anh, làm cho mọi thứ trở nên ý nghĩa hơn.
+            Anh muốn được ở bên em, che chở và yêu thương em mãi mãi. ❤️
+        </div>
+
+        <div class="btn-container">
+            <button class="love-btn" onclick="showSurprise()">Nhấn vào đây nè! 💕</button>
+        </div>
+    </div>
+
+    <!-- Fireworks -->
+    <div class="fireworks firework1" style="top: 20%; left: 20%;"></div>
+    <div class="fireworks firework2" style="top: 30%; left: 80%;"></div>
+    <div class="fireworks firework3" style="top: 70%; left: 30%;"></div>
+
+    <!-- Modal -->
+    <div id="surpriseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="heart" style="font-size: 60px;">💝</div>
+            <h2 style="color: #2c2c54; margin: 20px 0;">Surprise!</h2>
+            <p style="color: #40407a; font-size: 1.1em; line-height: 1.6;">
+                Cảm ơn em đã quét mã QR này!
+                <br><br>
+                Đây là lời tỏ tình chân thành nhất của anh.
+                Em có đồng ý làm người yêu anh không? 🥰
+            </p>
+            <div style="margin-top: 20px;">
+                <button class="love-btn" onclick="acceptLove()">Đồng ý! 💕</button>
+                <button class="love-btn" onclick="closeModal()" style="background: linear-gradient(45deg, #74b9ff, #0984e3);">Để anh suy nghĩ 😊</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+
+            document.querySelector('.floating-hearts').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        // Create hearts every 500ms
+        setInterval(createFloatingHeart, 500);
+
+        // Show surprise modal
+        function showSurprise() {
+            document.getElementById('surpriseModal').style.display = 'block';
+            createFireworks();
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('surpriseModal').style.display = 'none';
+        }
+
+        // Accept love function
+        function acceptLove() {
+            alert('Yayyy! Anh yêu em nhiều lắm! 💕💕💕');
+            closeModal();
+            // Create more hearts
+            for(let i = 0; i < 20; i++) {
+                setTimeout(createFloatingHeart, i * 100);
+            }
+        }
+
+        // Create fireworks effect
+        function createFireworks() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b'];
+
+            for(let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.className = 'fireworks';
+                    firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    firework.style.top = Math.random() * 100 + '%';
+                    firework.style.left = Math.random() * 100 + '%';
+                    firework.style.animationDelay = '0s';
+
+                    document.body.appendChild(firework);
+
+                    setTimeout(() => {
+                        firework.remove();
+                    }, 1000);
+                }, i * 200);
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('surpriseModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Add some interactive effects
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.modal') && !e.target.closest('.love-btn')) {
+                createFloatingHeart();
+            }
+        });
+    </script>
+</body>
+</html>
