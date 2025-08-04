@@ -41,7 +41,193 @@ body {
     animation: twinkle 2s ease-in-out infinite;
 }
 
-/* Mid-Autumn decorative elements */
+/* PNG Image decorations */
+.image-decoration {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Chị Hằng Nga */
+.chang-e-img {
+    top: 20%;
+    left: 12%;
+    width: 120px;
+    height: auto;
+    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+/* Thỏ Ngọc */
+.jade-rabbit-img {
+    bottom: 25%;
+    right: 10%;
+    width: 100px;
+    height: auto;
+    animation: hop 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
+
+/* Avatar bạn gái 1 - Góc trên phải */
+.girlfriend-avatar-1 {
+    top: 15%;
+    right: 20%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 182, 193, 0.8);
+    animation: pulse 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 182, 193, 0.6));
+    object-fit: cover;
+}
+
+/* Avatar bạn gái 2 - Bên trái giữa */
+.girlfriend-avatar-2 {
+    top: 45%;
+    left: 18%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 105, 180, 0.8);
+    animation: heartbeat 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.5));
+    object-fit: cover;
+}
+
+/* Avatar bạn gái 3 - Bên phải giữa */
+.girlfriend-avatar-3 {
+    top: 55%;
+    right: 18%;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 20, 147, 0.8);
+    animation: bounce-gentle 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.4));
+    object-fit: cover;
+}
+
+/* Avatar bạn gái 4 - Dưới giữa */
+.girlfriend-avatar-4 {
+    bottom: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 192, 203, 0.9);
+    animation: gentle-glow 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 18px rgba(255, 192, 203, 0.7));
+    object-fit: cover;
+}
+
+/* Thêm các animation mới cho avatar */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+        border-color: rgba(255, 105, 180, 0.8);
+    }
+    25% {
+        transform: scale(1.1);
+        border-color: rgba(255, 105, 180, 1);
+    }
+    50% {
+        transform: scale(1.05);
+        border-color: rgba(255, 105, 180, 0.9);
+    }
+}
+
+@keyframes bounce-gentle {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+    }
+    50% {
+        transform: translateY(-8px) scale(1.02);
+    }
+}
+
+@keyframes gentle-glow {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+        border-color: rgba(255, 192, 203, 0.9);
+        filter: drop-shadow(0 0 18px rgba(255, 192, 203, 0.7));
+    }
+    25% {
+        transform: translateX(-50%) scale(1.02);
+        border-color: rgba(255, 192, 203, 1);
+        filter: drop-shadow(0 0 25px rgba(255, 192, 203, 0.9));
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+        border-color: rgba(255, 182, 193, 1);
+        filter: drop-shadow(0 0 30px rgba(255, 182, 193, 1));
+    }
+    75% {
+        transform: translateX(-50%) scale(1.02);
+        border-color: rgba(255, 192, 203, 1);
+        filter: drop-shadow(0 0 25px rgba(255, 192, 203, 0.9));
+    }
+}
+
+/* Bánh trung thu */
+.mooncake-img {
+    bottom: 35%;
+    left: 8%;
+    width: 90px;
+    height: auto;
+    animation: rotate 8s linear infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+}
+
+/* Đèn lồng PNG */
+.lantern-img-1 {
+    top: 12%;
+    left: 5%;
+    width: 70px;
+    height: auto;
+    animation: sway 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.3));
+}
+
+.lantern-img-2 {
+    top: 30%;
+    right: 8%;
+    width: 75px;
+    height: auto;
+    animation: sway 4s ease-in-out infinite;
+    animation-delay: 2s;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.3));
+}
+
+/* Fallback emoji elements - ẩn khi có PNG */
+.emoji-fallback {
+    position: absolute;
+    font-size: 35px;
+    z-index: 1;
+}
+
+/* Nếu có PNG thì ẩn emoji fallback */
+.chang-e-img:not([style*="display: none"]) ~ .chang-e.emoji-fallback,
+.jade-rabbit-img:not([style*="display: none"]) ~ .chu-cuoi.emoji-fallback,
+.mooncake-img:not([style*="display: none"]) ~ .mooncake.emoji-fallback {
+    display: none;
+}
+
+/* Thêm animation pulse cho avatar */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255, 182, 193, 0.8);
+    }
+}
+/* Mid-Autumn decorative elements (emoji fallbacks) */
 .lantern {
     position: absolute;
     font-size: 40px;
@@ -60,27 +246,21 @@ body {
     animation-delay: 2s;
 }
 
-.chang-e {
-    position: absolute;
+.chang-e.emoji-fallback {
     top: 30%;
     left: 15%;
-    font-size: 35px;
     animation: float 6s ease-in-out infinite;
 }
 
-.chu-cuoi {
-    position: absolute;
+.chu-cuoi.emoji-fallback {
     bottom: 20%;
     right: 8%;
-    font-size: 30px;
     animation: hop 3s ease-in-out infinite;
 }
 
-.mooncake {
-    position: absolute;
+.mooncake.emoji-fallback {
     bottom: 30%;
     left: 10%;
-    font-size: 35px;
     animation: rotate 8s linear infinite;
 }
 
@@ -416,15 +596,7 @@ h2 {
         font-size: 30px;
     }
 
-    .chang-e {
-        font-size: 25px;
-    }
-
-    .chu-cuoi {
-        font-size: 22px;
-    }
-
-    .mooncake {
+    .chang-e.emoji-fallback, .chu-cuoi.emoji-fallback, .mooncake.emoji-fallback {
         font-size: 25px;
     }
 
@@ -438,6 +610,43 @@ h2 {
 
     .falling-lantern {
         font-size: 24px;
+    }
+
+    /* Scale down PNG images on mobile */
+    .chang-e-img {
+        width: 80px;
+    }
+
+    .jade-rabbit-img {
+        width: 70px;
+    }
+
+    .girlfriend-avatar-1 {
+        width: 60px;
+        height: 60px;
+    }
+
+    .girlfriend-avatar-2 {
+        width: 55px;
+        height: 55px;
+    }
+
+    .girlfriend-avatar-3 {
+        width: 50px;
+        height: 50px;
+    }
+
+    .girlfriend-avatar-4 {
+        width: 65px;
+        height: 65px;
+    }
+
+    .mooncake-img {
+        width: 65px;
+    }
+
+    .lantern-img-1, .lantern-img-2 {
+        width: 50px;
     }
 }
 
@@ -465,15 +674,7 @@ h2 {
         font-size: 25px;
     }
 
-    .chang-e {
-        font-size: 20px;
-    }
-
-    .chu-cuoi {
-        font-size: 18px;
-    }
-
-    .mooncake {
+    .chang-e.emoji-fallback, .chu-cuoi.emoji-fallback, .mooncake.emoji-fallback {
         font-size: 20px;
     }
 
@@ -487,5 +688,42 @@ h2 {
 
     .falling-lantern {
         font-size: 20px;
+    }
+
+    /* Further scale down PNG images */
+    .chang-e-img {
+        width: 60px;
+    }
+
+    .jade-rabbit-img {
+        width: 55px;
+    }
+
+    .girlfriend-avatar-1 {
+        width: 45px;
+        height: 45px;
+    }
+
+    .girlfriend-avatar-2 {
+        width: 42px;
+        height: 42px;
+    }
+
+    .girlfriend-avatar-3 {
+        width: 40px;
+        height: 40px;
+    }
+
+    .girlfriend-avatar-4 {
+        width: 48px;
+        height: 48px;
+    }
+
+    .mooncake-img {
+        width: 50px;
+    }
+
+    .lantern-img-1, .lantern-img-2 {
+        width: 40px;
     }
 }
