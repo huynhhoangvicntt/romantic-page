@@ -3,346 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dành Cho Em - Cự Giải Xinh Đẹp 🦀💖</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="./css/styles.css">
-
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦀</text></svg>">
-
-    <!-- Meta tags -->
-    <meta property="og:title" content="Dành Cho Em - Cự Giải Xinh Đẹp">
-    <meta property="og:description" content="Một thông điệp đặc biệt dành cho cung Cự Giải đáng yêu">
-    <meta name="description" content="Trang web lãng mạn dành riêng cho cung Cự Giải">
+    <title>Tết Trung Thu Đặc Biệt 🌙</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
 </head>
 <body>
-    <!-- Auto-start Music Trigger -->
-    <div id="musicTrigger" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; background: transparent; pointer-events: auto;" onclick="startMusic()"></div>
+    <!-- Background -->
+    <div class="background">
+        <div class="moon">🌙</div>
+        <div class="stars">✨ ⭐ 🌟 ✨ ⭐</div>
 
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-content">
-            <div class="cancer-constellation">
-                <div class="star star-1">✨</div>
-                <div class="star star-2">⭐</div>
-                <div class="star star-3">💫</div>
-                <div class="star star-4">✨</div>
-            </div>
-            <div class="loading-text">
-                <span class="cancer-symbol">♋</span>
-                <p>Đang chuẩn bị thông điệp đặc biệt...</p>
-                <small style="opacity: 0.7; margin-top: 10px; display: block;">Click vào màn hình để bắt đầu 🎵</small>
-            </div>
+        <!-- Decorative Mid-Autumn elements -->
+        <div class="lantern lantern-1">🏮</div>
+        <div class="lantern lantern-2">🏮</div>
+        <div class="chang-e">🧚‍♀️</div>
+        <div class="chu-cuoi">🐰</div>
+        <div class="mooncake">🥮</div>
+        <div class="bamboo">🎋</div>
+        <div class="sparkles sparkle-1">✨</div>
+        <div class="sparkles sparkle-2">✨</div>
+        <div class="sparkles sparkle-3">🌟</div>
+    </div>
+
+    <!-- Fireworks container -->
+    <div id="fireworks"></div>
+
+    <!-- Falling lanterns container -->
+    <div id="falling-lanterns"></div>
+
+    <!-- Music control -->
+    <button id="musicToggle" class="music-btn" onclick="toggleMusic()">🔊</button>
+
+    <!-- Main content -->
+    <div class="container">
+        <div class="card" id="screen1">
+            <h1>🌙 Chào em, Cancer xinh đẹp! 🦀</h1>
+            <p class="text">Hôm nay là Tết Trung Thu - ngày đoàn viên đặc biệt...</p>
+            <p class="text">Anh có một vài câu hỏi muốn hỏi em về ngày lễ này nhé! 💕</p>
+            <div class="emoji">🦀✨</div>
+            <button class="btn" onclick="nextScreen()">Bắt đầu thôi! 💖</button>
+        </div>
+
+        <div class="card hidden" id="screen2">
+            <h2>Câu hỏi đầu tiên nè! 🥮</h2>
+            <p class="question">Em có biết Tết Trung Thu còn được gọi là gì không?</p>
+            <button class="btn-option" onclick="showAnswer1()">Tết Thiếu nhi</button>
+            <button class="btn-option" onclick="showAnswer1()">Tết Đoàn viên</button>
+            <button class="btn-option" onclick="showAnswer1()">Cả hai đáp án trên</button>
+        </div>
+
+        <div class="card hidden" id="screen3">
+            <h2>Đúng rồi! 🎉</h2>
+            <p class="text">Tết Trung Thu vừa là <strong>Tết Thiếu nhi</strong> vừa là <strong>Tết Đoàn viên</strong>!</p>
+            <p class="romantic">Giống như em vậy - vừa đáng yêu như trẻ con, vừa khiến anh muốn ở bên mãi mãi 💕</p>
+            <div class="emoji">🥮🌙</div>
+            <button class="btn" onclick="nextScreen()">Câu tiếp theo nào! 😊</button>
+        </div>
+
+        <div class="card hidden" id="screen4">
+            <h2>Câu hỏi thứ hai! 🏮</h2>
+            <p class="question">Theo em, điều gì làm cho Tết Trung Thu trở nên đặc biệt?</p>
+            <button class="btn-option" onclick="showAnswer2()">Bánh trung thu ngon</button>
+            <button class="btn-option" onclick="showAnswer2()">Trăng tròn đẹp nhất</button>
+            <button class="btn-option" onclick="showAnswer2()">Được ở bên người thương</button>
+        </div>
+
+        <div class="card hidden" id="screen5">
+            <h2>Câu trả lời nào cũng đúng! ✨</h2>
+            <p class="text">Nhưng với anh, điều đặc biệt nhất là...</p>
+            <p class="romantic">Được ngắm trăng cùng em - cô gái Cancer xinh đẹp sinh ngày 26/06 🦀💖</p>
+            <div class="emoji">💖🌙💖</div>
+            <button class="btn" onclick="nextScreen()">Aww... tiếp tục nào! 😍</button>
+        </div>
+
+        <div class="card hidden" id="screen6">
+            <h2>Câu cuối cùng! 🌟</h2>
+            <p class="question">Nếu anh mời em đi ngắm trăng Trung Thu, em sẽ chọn địa điểm nào?</p>
+            <button class="btn-option" onclick="showFinalAnswer()">Nơi yên tĩnh, chỉ có hai ta</button>
+            <button class="btn-option" onclick="showFinalAnswer()">Chỗ đông vui, có nhiều đèn lồng</button>
+            <button class="btn-option" onclick="showFinalAnswer()">Bất cứ đâu, miễn là cùng anh</button>
+        </div>
+
+        <div class="card hidden" id="screen7">
+            <h1>💕 Dành tặng em yêu 💕</h1>
+            <p class="text">Em ơi, dù câu trả lời của em là gì thì anh cũng chỉ muốn nói rằng...</p>
+            <p class="romantic big">"Trăng tròn đêm Trung Thu có đẹp đến mấy, cũng không bằng nụ cười của em trong mắt anh 🌙✨"</p>
+            <p class="text">Chúc em - cô Cancer đáng yêu của anh - một mùa Trung Thu thật ngọt ngào!</p>
+            <div class="emoji">🦀💖🌙🥮🏮✨</div>
+            <button class="btn" onclick="restart()">Chơi lại nha! 💕</button>
         </div>
     </div>
 
-    <!-- Background Elements -->
-    <div class="background-elements">
-        <div class="moon-phases">
-            <div class="moon new-moon">🌑</div>
-            <div class="moon crescent-moon">🌙</div>
-            <div class="moon full-moon">🌕</div>
-        </div>
-        <div class="floating-elements"></div>
-        <div class="water-ripples">
-            <div class="ripple ripple-1"></div>
-            <div class="ripple ripple-2"></div>
-            <div class="ripple ripple-3"></div>
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <div class="nav-content">
-            <div class="logo">
-                <span class="cancer-icon">🦀</span>
-                <span class="logo-text">Cancer Love</span>
-            </div>
-            <div class="nav-links">
-                <a href="#home" class="nav-link active">Trang chủ</a>
-                <a href="#message" class="nav-link">Thông điệp</a>
-                <a href="#traits" class="nav-link">Về em</a>
-                <a href="#surprise" class="nav-link">Surprise</a>
-            </div>
-            <!-- Music Control -->
-            <div class="music-control">
-                <button id="musicToggle" class="music-btn" title="Bật/tắt nhạc">
-                    <span class="music-icon">🎵</span>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Hero Section -->
-        <section id="home" class="hero-section">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="zodiac-intro">
-                        <div class="zodiac-symbol">♋</div>
-                        <p class="zodiac-date">22/6 - 22/7</p>
-                    </div>
-
-                    <h1 class="hero-title">
-                        <span class="title-line-1">Dành Cho Em</span>
-                        <span class="title-line-2">Cự Giải Xinh Đẹp</span>
-                    </h1>
-
-                    <p class="hero-subtitle">
-                        Những người sinh dưới cung Cự Giải luôn mang trong mình sự dịu dàng,
-                        lòng trắc ẩn và tình yêu thương vô bờ bến
-                    </p>
-
-                    <div class="hero-cta">
-                        <button class="cta-button primary" onclick="scrollToSection('message')">
-                            <span class="btn-text">Đọc thông điệp</span>
-                            <span class="btn-icon">💌</span>
-                        </button>
-                        <div class="music-status">
-                            <span class="music-status-text" id="musicStatus">🎵 Click để bắt đầu nhạc...</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="cancer-illustration">
-                        <div class="crab-container">
-                            <div class="crab-body">🦀</div>
-                            <div class="love-aura"></div>
-                        </div>
-                        <div class="element-water">
-                            <div class="water-drop">💧</div>
-                            <div class="water-drop">💧</div>
-                            <div class="water-drop">💧</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Message Section -->
-        <section id="message" class="message-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <h2 class="section-title">Thông Điệp Từ Trái Tim</h2>
-                    <div class="title-decoration">
-                        <span class="decoration-element">🌙</span>
-                        <span class="decoration-line"></span>
-                        <span class="decoration-element">💙</span>
-                        <span class="decoration-line"></span>
-                        <span class="decoration-element">🌙</span>
-                    </div>
-                </div>
-
-                <div class="message-content">
-                    <div class="message-card main-message">
-                        <div class="card-header">
-                            <span class="card-icon">💌</span>
-                            <h3>Gửi Em - Người Cự Giải Đáng Yêu</h3>
-                        </div>
-                        <div class="card-body">
-                            <p class="message-text">
-                                Em có biết không? Giống như mặt trăng chi phối thủy triều,
-                                em đã làm trái tim anh dao động theo từng cảm xúc của em.
-                                Sự dịu dàng và nhạy cảm của em không phải là điểm yếu,
-                                mà chính là điều khiến anh say đắm.
-                            </p>
-                            <p class="message-text">
-                                Như con cua bảo vệ chiếc vỏ mềm mại bên trong,
-                                anh muốn trở thành nơi an toàn để em có thể thoải mái
-                                thể hiện tất cả cảm xúc chân thực nhất.
-                            </p>
-                            <div class="signature">
-                                <span class="signature-text">Với tất cả tình yêu</span>
-                                <span class="signature-heart">💙</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Cancer Traits Section -->
-        <section id="traits" class="traits-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <h2 class="section-title">Vì Sao Anh Yêu Em</h2>
-                    <p class="section-subtitle">Những đặc điểm tuyệt vời của cung Cự Giải</p>
-                </div>
-
-                <div class="traits-grid">
-                    <div class="trait-card" data-trait="caring">
-                        <div class="trait-icon">🤗</div>
-                        <h3 class="trait-title">Quan Tâm</h3>
-                        <p class="trait-description">
-                            Em luôn quan tâm đến mọi người xung quanh với tình yêu thương chân thành
-                        </p>
-                    </div>
-
-                    <div class="trait-card" data-trait="intuitive">
-                        <div class="trait-icon">🔮</div>
-                        <h3 class="trait-title">Trực Giác</h3>
-                        <p class="trait-description">
-                            Trực giác nhạy bén giúp em hiểu được cảm xúc của người khác
-                        </p>
-                    </div>
-
-                    <div class="trait-card" data-trait="loyal">
-                        <div class="trait-icon">💙</div>
-                        <h3 class="trait-title">Trung Thành</h3>
-                        <p class="trait-description">
-                            Khi yêu, em yêu hết mình và luôn trân trọng những mối quan hệ
-                        </p>
-                    </div>
-
-                    <div class="trait-card" data-trait="emotional">
-                        <div class="trait-icon">🌊</div>
-                        <h3 class="trait-title">Cảm Xúc Phong Phú</h3>
-                        <p class="trait-description">
-                            Cảm xúc sâu sắc khiến em trở nên chân thành và đáng yêu
-                        </p>
-                    </div>
-
-                    <div class="trait-card" data-trait="protective">
-                        <div class="trait-icon">🛡️</div>
-                        <h3 class="trait-title">Bảo Vệ</h3>
-                        <p class="trait-description">
-                            Em luôn bảo vệ những người em yêu thương như bảo vệ gia đình
-                        </p>
-                    </div>
-
-                    <div class="trait-card" data-trait="creative">
-                        <div class="trait-icon">🎨</div>
-                        <h3 class="trait-title">Sáng Tạo</h3>
-                        <p class="trait-description">
-                            Trí tưởng tượng phong phú giúp em nhìn thế giới theo cách đặc biệt
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Surprise Section -->
-        <section id="surprise" class="surprise-section">
-            <div class="section-container">
-                <div class="section-header">
-                    <h2 class="section-title">Surprise Đặc Biệt</h2>
-                    <p class="section-subtitle">Dành riêng cho em</p>
-                </div>
-
-                <div class="surprise-content">
-                    <div class="surprise-reveal">
-                        <button id="surpriseBtn" class="surprise-button">
-                            <span class="btn-shell">🐚</span>
-                            <span class="btn-text">Mở surprise</span>
-                        </button>
-                    </div>
-
-                    <div id="surpriseModal" class="surprise-modal">
-                        <div class="modal-overlay"></div>
-                        <div class="modal-content">
-                            <button class="modal-close" onclick="closeSurprise()">&times;</button>
-                            <div class="modal-body">
-                                <div class="surprise-animation">
-                                    <div class="hearts-explosion">
-                                        <div class="heart">💙</div>
-                                        <div class="heart">💙</div>
-                                        <div class="heart">💙</div>
-                                        <div class="heart">💙</div>
-                                        <div class="heart">💙</div>
-                                    </div>
-                                </div>
-                                <div class="surprise-message">
-                                    <h3>Em có đồng ý...</h3>
-                                    <p>Làm người yêu anh không?</p>
-                                    <div class="surprise-options">
-                                        <button class="option-btn accept" onclick="acceptLove()">
-                                            Đồng ý! 💙
-                                        </button>
-                                        <button class="option-btn think" onclick="needTime()">
-                                            Để em suy nghĩ 🤔
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-message">
-                <p>Được tạo với 💙 dành riêng cho cung Cự Giải xinh đẹp</p>
-            </div>
-            <div class="footer-zodiac">
-                <span class="zodiac-symbol">♋</span>
-                <span class="element-symbol">🌊</span>
-                <span class="planet-symbol">🌙</span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Background Music - Multiple formats for better compatibility -->
-    <audio id="backgroundMusic" preload="auto" loop muted>
-        <source src="./assets/romantic-music.mp3" type="audio/mpeg">
-        <source src="./assets/romantic-music.ogg" type="audio/ogg">
-        <source src="./assets/romantic-music.wav" type="audio/wav">
+    <!-- Audio -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="assets/romantic-music.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Scripts -->
-    <script src="./js/main.js"></script>
-
-    <!-- Music Auto-start Script -->
-    <script>
-        // Global function to start music on first interaction
-        function startMusic() {
-            if (window.cancerPage && !window.cancerPage.userInteracted) {
-                window.cancerPage.userInteracted = true;
-                window.cancerPage.attemptAutoplay();
-
-                // Remove the overlay after first click
-                const trigger = document.getElementById('musicTrigger');
-                if (trigger) {
-                    trigger.style.display = 'none';
-                }
-            }
-        }
-
-        // Additional fallback for mobile
-        document.addEventListener('touchstart', startMusic, { once: true });
-        document.addEventListener('click', startMusic, { once: true });
-
-        // Try to unmute and play after page load
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const audio = document.getElementById('backgroundMusic');
-                if (audio) {
-                    audio.muted = false;
-                    audio.play().catch(() => {
-                        // Silently fail - will be handled by user interaction
-                    });
-                }
-            }, 3000);
-        });
-    </script>
-</body>
-</html>d Music Audio Element -->
-    <audio id="backgroundMusic" preload="auto" loop>
-        <source src="./assets/romantic-music.mp3" type="audio/mpeg">
-        <source src="./assets/romantic-music.ogg" type="audio/ogg">
-        <source src="./assets/romantic-music.wav" type="audio/wav">
-    </audio>
-
-    <!-- Scripts - Fixed path -->
-    <script src="./js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
