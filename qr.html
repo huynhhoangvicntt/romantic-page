@@ -98,6 +98,16 @@
             color: #666;
         }
 
+        .url-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ff6b6b;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
         .instructions {
             background: #e8f5e8;
             padding: 15px;
@@ -107,6 +117,15 @@
             font-size: 14px;
             line-height: 1.5;
         }
+
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            color: #856404;
+        }
     </style>
 </head>
 <body>
@@ -114,12 +133,22 @@
         <div class="heart">💖</div>
         <h1>QR Code Hình Trái Tim</h1>
 
-        <div class="url-display">
-            https://huynhhoangvicntt.github.io/romantic-page
+        <div class="warning">
+            <strong>⚠️ Chú ý:</strong> Hiện tại QR đang trỏ đến GitHub Pages khác. Hãy nhập URL của trang index.html của bạn bên dưới:
+        </div>
+
+        <input type="text" id="urlInput" class="url-input"
+               placeholder="Nhập URL của file index.html (ví dụ: https://your-domain.com/index.html)"
+               value="">
+
+        <button class="download-btn" onclick="updateQR()">🔄 Cập nhật QR Code</button>
+
+        <div class="url-display" id="currentUrl">
+            Chưa có URL - hãy nhập URL và nhấn "Cập nhật QR Code"
         </div>
 
         <div class="qr-container">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A//huynhhoangvicntt.github.io/romantic-page&color=d63384&bgcolor=ffffff&margin=10&ecc=M"
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=Nhap-URL-o-tren&color=d63384&bgcolor=ffffff&margin=10&ecc=M"
                  alt="QR Code"
                  class="qr-image"
                  id="qrImage">
@@ -131,17 +160,56 @@
 
         <div class="instructions">
             <strong>📋 Hướng dẫn sử dụng:</strong><br>
-            1. <strong>Click "Tải QR Code"</strong> để lưu về điện thoại<br>
-            2. <strong>In ra giấy</strong> hoặc gửi qua chat<br>
-            3. <strong>Hướng dẫn người nhận:</strong> Mở camera điện thoại → chĩa vào QR code<br>
-            4. <strong>Hoặc dùng app quét QR</strong> như Zalo, Facebook, Google Lens<br><br>
+            1. <strong>Nhập URL</strong> của file index.html đã upload lên server<br>
+            2. <strong>Click "Cập nhật QR Code"</strong> để tạo QR mới<br>
+            3. <strong>Click "Tải QR Code"</strong> để lưu về điện thoại<br>
+            4. <strong>Test QR Code</strong> để kiểm tra trước khi tặng!<br><br>
 
-            <strong>💡 Tip:</strong> Click "Test QR Code" để kiểm tra trước khi tặng!
+            <strong>💡 Gợi ý upload file:</strong><br>
+            • GitHub Pages: github.io<br>
+            • Netlify: netlify.app<br>
+            • Vercel: vercel.app<br>
+            • Firebase Hosting<br>
+            • Hoặc hosting bất kỳ
         </div>
     </div>
 
     <script>
+        let currentQRUrl = '';
+
+        function updateQR() {
+            const urlInput = document.getElementById('urlInput');
+            const qrImage = document.getElementById('qrImage');
+            const currentUrlDiv = document.getElementById('currentUrl');
+
+            const newUrl = urlInput.value.trim();
+
+            if (!newUrl) {
+                alert('Vui lòng nhập URL!');
+                return;
+            }
+
+            if (!newUrl.startsWith('http://') && !newUrl.startsWith('https://')) {
+                alert('URL phải bắt đầu bằng http:// hoặc https://');
+                return;
+            }
+
+            currentQRUrl = newUrl;
+            const encodedUrl = encodeURIComponent(newUrl);
+            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodedUrl}&color=d63384&bgcolor=ffffff&margin=10&ecc=M`;
+
+            qrImage.src = qrApiUrl;
+            currentUrlDiv.textContent = newUrl;
+
+            console.log('QR Code updated:', newUrl);
+        }
+
         function downloadQR() {
+            if (!currentQRUrl) {
+                alert('Vui lòng cập nhật QR Code trước!');
+                return;
+            }
+
             const qrImage = document.getElementById('qrImage');
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
@@ -168,7 +236,7 @@
                     const url = URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
-                    a.download = 'qr-code-trai-tim.png';
+                    a.download = 'qr-code-tet-trung-thu.png';
                     a.click();
                     URL.revokeObjectURL(url);
                 });
@@ -177,12 +245,16 @@
         }
 
         function testQR() {
-            window.open('https://huynhhoangvicntt.github.io/romantic-page', '_blank');
+            if (!currentQRUrl) {
+                alert('Vui lòng cập nhật QR Code trước!');
+                return;
+            }
+            window.open(currentQRUrl, '_blank');
         }
 
-        // Auto-focus on download button
+        // Auto-focus on URL input
         window.addEventListener('load', function() {
-            document.querySelector('.download-btn').focus();
+            document.getElementById('urlInput').focus();
         });
     </script>
 </body>
