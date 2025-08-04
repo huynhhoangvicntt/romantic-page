@@ -8,19 +8,21 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- CSS - Fixed path -->
+    <!-- CSS -->
     <link rel="stylesheet" href="./css/styles.css">
 
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦀</text></svg>">
 
-    <!-- Meta tags for social sharing -->
+    <!-- Meta tags -->
     <meta property="og:title" content="Dành Cho Em - Cự Giải Xinh Đẹp">
     <meta property="og:description" content="Một thông điệp đặc biệt dành cho cung Cự Giải đáng yêu">
-    <meta property="og:image" content="https://huynhhoangvicntt.github.io/romantic-page/assets/preview.jpg">
-    <meta name="description" content="Trang web lãng mạn dành riêng cho cung Cự Giải - những người nhạy cảm, dịu dàng và đầy tình yêu thương">
+    <meta name="description" content="Trang web lãng mạn dành riêng cho cung Cự Giải">
 </head>
 <body>
+    <!-- Auto-start Music Trigger -->
+    <div id="musicTrigger" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; background: transparent; pointer-events: auto;" onclick="startMusic()"></div>
+
     <!-- Loading Screen -->
     <div id="loadingScreen" class="loading-screen">
         <div class="loading-content">
@@ -33,6 +35,7 @@
             <div class="loading-text">
                 <span class="cancer-symbol">♋</span>
                 <p>Đang chuẩn bị thông điệp đặc biệt...</p>
+                <small style="opacity: 0.7; margin-top: 10px; display: block;">Click vào màn hình để bắt đầu 🎵</small>
             </div>
         </div>
     </div>
@@ -65,6 +68,12 @@
                 <a href="#traits" class="nav-link">Về em</a>
                 <a href="#surprise" class="nav-link">Surprise</a>
             </div>
+            <!-- Music Control -->
+            <div class="music-control">
+                <button id="musicToggle" class="music-btn" title="Bật/tắt nhạc">
+                    <span class="music-icon">🎵</span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -94,10 +103,9 @@
                             <span class="btn-text">Đọc thông điệp</span>
                             <span class="btn-icon">💌</span>
                         </button>
-                        <button class="cta-button secondary" onclick="playMusic()">
-                            <span class="btn-text">Phát nhạc</span>
-                            <span class="btn-icon">🎵</span>
-                        </button>
+                        <div class="music-status">
+                            <span class="music-status-text" id="musicStatus">🎵 Click để bắt đầu nhạc...</span>
+                        </div>
                     </div>
                 </div>
 
@@ -283,9 +291,55 @@
         </div>
     </footer>
 
-    <!-- Audio Element -->
+    <!-- Background Music - Multiple formats for better compatibility -->
+    <audio id="backgroundMusic" preload="auto" loop muted>
+        <source src="./assets/romantic-music.mp3" type="audio/mpeg">
+        <source src="./assets/romantic-music.ogg" type="audio/ogg">
+        <source src="./assets/romantic-music.wav" type="audio/wav">
+    </audio>
+
+    <!-- Scripts -->
+    <script src="./js/main.js"></script>
+
+    <!-- Music Auto-start Script -->
+    <script>
+        // Global function to start music on first interaction
+        function startMusic() {
+            if (window.cancerPage && !window.cancerPage.userInteracted) {
+                window.cancerPage.userInteracted = true;
+                window.cancerPage.attemptAutoplay();
+
+                // Remove the overlay after first click
+                const trigger = document.getElementById('musicTrigger');
+                if (trigger) {
+                    trigger.style.display = 'none';
+                }
+            }
+        }
+
+        // Additional fallback for mobile
+        document.addEventListener('touchstart', startMusic, { once: true });
+        document.addEventListener('click', startMusic, { once: true });
+
+        // Try to unmute and play after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const audio = document.getElementById('backgroundMusic');
+                if (audio) {
+                    audio.muted = false;
+                    audio.play().catch(() => {
+                        // Silently fail - will be handled by user interaction
+                    });
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>d Music Audio Element -->
     <audio id="backgroundMusic" preload="auto" loop>
         <source src="./assets/romantic-music.mp3" type="audio/mpeg">
+        <source src="./assets/romantic-music.ogg" type="audio/ogg">
+        <source src="./assets/romantic-music.wav" type="audio/wav">
     </audio>
 
     <!-- Scripts - Fixed path -->
