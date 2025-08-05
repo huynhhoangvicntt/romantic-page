@@ -152,9 +152,9 @@ body {
 }
 
 .jade-rabbit-img {
-    bottom: max(15%, calc(env(safe-area-inset-bottom) + 15%));
-    right: 3%;
-    width: 30px;
+    bottom: max(10%, calc(env(safe-area-inset-bottom) + 10%));
+    right: 22%;
+    width: 60px;
     height: auto;
     animation: hop 3s ease-in-out infinite;
 }
@@ -162,8 +162,8 @@ body {
 .girlfriend-avatar-1 {
     top: max(8%, calc(env(safe-area-inset-top) + 8%));
     right: 12%;
-    width: 60px;
-    height: 60px;
+    width: 230px;
+    height: 230px;
     border-radius: 50%;
     border: 2px solid rgba(255, 182, 193, 0.8);
     animation: pulse 4s ease-in-out infinite;
@@ -173,8 +173,8 @@ body {
 .girlfriend-avatar-2 {
     bottom: max(25%, calc(env(safe-area-inset-bottom) + 25%));
     left: 5%;
-    width: 50px;
-    height: 50px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     border: 2px solid rgba(255, 105, 180, 0.8);
     animation: heartbeat 3s ease-in-out infinite;
@@ -183,9 +183,9 @@ body {
 
 .girlfriend-avatar-3 {
     top: max(12%, calc(env(safe-area-inset-top) + 12%));
-    left: 8%;
-    width: 55px;
-    height: 55px;
+    left: 18%;
+    width: 95px;
+    height: 95px;
     border-radius: 50%;
     border: 2px solid rgba(255, 20, 147, 0.8);
     animation: bounce-gentle 5s ease-in-out infinite;
@@ -195,9 +195,9 @@ body {
 
 .girlfriend-avatar-4 {
     bottom: max(30%, calc(env(safe-area-inset-bottom) + 30%));
-    right: 8%;
-    width: 45px;
-    height: 45px;
+    right: 18%;
+    width: 85px;
+    height: 85px;
     border-radius: 50%;
     border: 2px solid rgba(255, 192, 203, 0.9);
     animation: gentle-glow 4s ease-in-out infinite;
@@ -231,18 +231,18 @@ body {
 }
 
 .lantern-img-3 {
-    top: 38%;
-    left: 6%;
-    width: 18px;
+    top: 88%;
+    left: 26%;
+    width: 38px;
     height: auto;
     animation: sway 4s ease-in-out infinite;
     animation-delay: 1s;
 }
 
 .lantern-img-4 {
-    bottom: max(35%, calc(env(safe-area-inset-bottom) + 35%));
-    right: 12%;
-    width: 20px;
+    bottom: max(14%, calc(env(safe-area-inset-bottom) + 14%));
+    right: 45%;
+    width: 50px;
     height: auto;
     animation: sway 4s ease-in-out infinite;
     animation-delay: 3s;
@@ -1185,14 +1185,14 @@ body {
     .girlfriend-avatar-3 {
         width: 80px;
         height: 80px;
-        top: max(20%, calc(env(safe-area-inset-top) + 20%));
+        top: max(15%, calc(env(safe-area-inset-top) + 15%));
         left: 25%;
     }
 
     .girlfriend-avatar-4 {
         width: 58px;
         height: 58px;
-        bottom: max(25%, calc(env(safe-area-inset-bottom) + 25%));
+        bottom: max(22%, calc(env(safe-area-inset-bottom) + 22%));
         right: 5%;
     }
 }
