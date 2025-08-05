@@ -8,107 +8,270 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
 </head>
 <body>
-    <!-- Background -->
+    <!-- Background elements - positioned to avoid book overlap -->
     <div class="background">
+        <!-- Top area decorations -->
         <div class="moon">🌙</div>
-        <div class="stars">✨ ⭐ 🌟 ✨ ⭐</div>
+        <div class="stars">✨⭐</div>
 
-        <!-- Decorative Mid-Autumn elements with images -->
-        <div class="lantern lantern-1">🏮</div>
-        <div class="lantern lantern-2">🏮</div>
+        <!-- Left side decorations -->
+        <div class="lantern lantern-left">🏮</div>
+        <div class="chang-e-left">🧚‍♀️</div>
 
-        <!-- PNG Images - Thay thế bằng hình ảnh thật -->
+        <!-- Right side decorations -->
+        <div class="lantern lantern-right">🏮</div>
+        <div class="bamboo-right">🎋</div>
+
+        <!-- Bottom area decorations -->
+        <div class="chu-cuoi-bottom">🐰</div>
+        <div class="mooncake-bottom">🥮</div>
+
+        <!-- Corner sparkles -->
+        <div class="sparkle corner-tl">✨</div>
+        <div class="sparkle corner-tr">🌟</div>
+        <div class="sparkle corner-bl">✨</div>
+        <div class="sparkle corner-br">⭐</div>
+
+        <!-- PNG Images với safe positioning - ĐỦ 4 AVATAR -->
         <img src="assets/images/chang-e.png" alt="Chị Hằng Nga" class="image-decoration chang-e-img" onerror="this.style.display='none'">
         <img src="assets/images/jade-rabbit.png" alt="Thỏ Ngọc" class="image-decoration jade-rabbit-img" onerror="this.style.display='none'">
 
-        <!-- 4 ảnh bạn gái ở các vị trí khác nhau -->
-        <img src="assets/images/girlfriend-avatar-1.png" alt="Avatar bạn gái 1" class="image-decoration girlfriend-avatar-1" onerror="this.style.display='none'">
-        <img src="assets/images/girlfriend-avatar-2.png" alt="Avatar bạn gái 2" class="image-decoration girlfriend-avatar-2" onerror="this.style.display='none'">
-        <img src="assets/images/girlfriend-avatar-3.png" alt="Avatar bạn gái 3" class="image-decoration girlfriend-avatar-3" onerror="this.style.display='none'">
-        <img src="assets/images/girlfriend-avatar-4.png" alt="Avatar bạn gái 4" class="image-decoration girlfriend-avatar-4" onerror="this.style.display='none'">
+        <!-- 4 ảnh girlfriend đầy đủ -->
+        <img src="assets/images/girlfriend-avatar-1.png" alt="Avatar 1" class="image-decoration girlfriend-avatar-1" onerror="this.style.display='none'">
+        <img src="assets/images/girlfriend-avatar-2.png" alt="Avatar 2" class="image-decoration girlfriend-avatar-2" onerror="this.style.display='none'">
+        <img src="assets/images/girlfriend-avatar-3.png" alt="Avatar 3" class="image-decoration girlfriend-avatar-3" onerror="this.style.display='none'">
+        <img src="assets/images/girlfriend-avatar-4.png" alt="Avatar 4" class="image-decoration girlfriend-avatar-4" onerror="this.style.display='none'">
 
         <img src="assets/images/mooncake.png" alt="Bánh trung thu" class="image-decoration mooncake-img" onerror="this.style.display='none'">
         <img src="assets/images/lantern-red.png" alt="Đèn lồng đỏ" class="image-decoration lantern-img-1" onerror="this.style.display='none'">
-        <img src="assets/images/lantern-red.png" alt="Đèn lồng đỏ" class="image-decoration lantern-img-4" onerror="this.style.display='none'">
         <img src="assets/images/lantern-yellow.png" alt="Đèn lồng vàng" class="image-decoration lantern-img-2" onerror="this.style.display='none'">
-        <img src="assets/images/lantern-yellow.png" alt="Đèn lồng vàng" class="image-decoration lantern-img-3" onerror="this.style.display='none'">
-
-        <!-- Fallback emoji elements -->
-        <div class="chang-e emoji-fallback">🧚‍♀️</div>
-        <div class="chu-cuoi emoji-fallback">🐰</div>
-        <div class="mooncake emoji-fallback">🥮</div>
-        <div class="bamboo">🎋</div>
-        <div class="sparkles sparkle-1">✨</div>
-        <div class="sparkles sparkle-2">✨</div>
-        <div class="sparkles sparkle-3">🌟</div>
+        <img src="assets/images/lantern-red.png" alt="Đèn lồng đỏ 2" class="image-decoration lantern-img-3" onerror="this.style.display='none'">
+        <img src="assets/images/lantern-yellow.png" alt="Đèn lồng vàng 2" class="image-decoration lantern-img-4" onerror="this.style.display='none'">
     </div>
 
-    <!-- Fireworks container -->
+    <!-- Effects containers -->
     <div id="fireworks"></div>
-
-    <!-- Falling lanterns container -->
     <div id="falling-lanterns"></div>
 
     <!-- Music control -->
     <button id="musicToggle" class="music-btn" onclick="toggleMusic()">🔊</button>
 
-    <!-- Main content -->
+    <!-- Main content - Compact Book -->
     <div class="container">
-        <div class="card" id="screen1">
-            <h1>🌙 Chào em, Cancer xinh đẹp! 🦀</h1>
-            <p class="text">Hôm nay là Tết Trung Thu - ngày đoàn viên đặc biệt...</p>
-            <p class="text">Anh có một vài câu hỏi muốn hỏi em về ngày lễ này nhé! 💕</p>
-            <div class="emoji">🦀✨</div>
-            <button class="btn" onclick="nextScreen()">Bắt đầu thôi! 💖</button>
-        </div>
+        <div class="book-wrapper">
+            <div class="compact-book">
+                <!-- Book spine -->
+                <div class="book-spine"></div>
 
-        <div class="card hidden" id="screen2">
-            <h2>Câu hỏi đầu tiên nè! 🥮</h2>
-            <p class="question">Em có biết Tết Trung Thu còn được gọi là gì không?</p>
-            <button class="btn-option" onclick="showAnswer1()">Tết Thiếu nhi</button>
-            <button class="btn-option" onclick="showAnswer1()">Tết Đoàn viên</button>
-            <button class="btn-option" onclick="showAnswer1()">Cả hai đáp án trên</button>
-        </div>
+                <!-- Book cover -->
+                <div class="book-cover">
+                    <div class="cover-title">
+                        <span class="title-line1">Tết Trung Thu</span>
+                        <span class="title-line2">💕 Cho Em 💕</span>
+                    </div>
+                </div>
 
-        <div class="card hidden" id="screen3">
-            <h2>Đúng rồi! 🎉</h2>
-            <p class="text">Tết Trung Thu vừa là <strong>Tết Thiếu nhi</strong> vừa là <strong>Tết Đoàn viên</strong>!</p>
-            <p class="romantic">Giống như em vậy - vừa đáng yêu như trẻ con, vừa khiến anh muốn ở bên mãi mãi 💕</p>
-            <div class="emoji">🥮🌙</div>
-            <button class="btn" onclick="nextScreen()">Câu tiếp theo nào! 😊</button>
-        </div>
+                <!-- Page 1: Welcome -->
+                <div class="page" data-page="1" onclick="nextPage()">
+                    <div class="page-front">
+                        <div class="page-content">
+                            <div class="page-header">Trang 1</div>
+                            <div class="text-content">
+                                <div class="line title-text">🌙 Chào em Cancer! 🦀</div>
+                                <div class="line">Hôm nay là Tết Trung Thu -</div>
+                                <div class="line">ngày đoàn viên đặc biệt.</div>
+                                <div class="line">Anh có vài câu hỏi</div>
+                                <div class="line">về ngày lễ này nhé! 💕</div>
+                                <div class="emoji-small">🦀✨</div>
+                                <div class="instruction">👆 Chạm để lật trang</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mặt sau trang 1 - Ảnh girlfriend -->
+                    <div class="page-back">
+                        <div class="girlfriend-page-content">
+                            <img src="assets/images/girlfriend-avatar-1.png" alt="Girlfriend 1" class="girlfriend-back-img" onerror="this.style.display='none'">
+                            <div class="girlfriend-text">💕 Em yêu của anh 💕</div>
+                            <div class="girlfriend-emoji">🦀🌙✨</div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="card hidden" id="screen4">
-            <h2>Câu hỏi thứ hai! 🏮</h2>
-            <p class="question">Theo em, điều gì làm cho Tết Trung Thu trở nên đặc biệt?</p>
-            <button class="btn-option" onclick="showAnswer2()">Bánh trung thu ngon</button>
-            <button class="btn-option" onclick="showAnswer2()">Trăng tròn đẹp nhất</button>
-            <button class="btn-option" onclick="showAnswer2()">Được ở bên người thương</button>
-        </div>
+                <!-- Page 2: Question 1 -->
+                <div class="page" data-page="2">
+                    <div class="page-front">
+                        <div class="page-content">
+                            <div class="page-header">Trang 2</div>
+                            <div class="text-content">
+                                <div class="line question-title">Câu hỏi 1 🥮</div>
+                                <div class="line question">Em có biết Tết Trung Thu</div>
+                                <div class="line question">còn gọi là gì không?</div>
+                                <button class="answer-btn" onclick="showAnswer1()">A. Tết Thiếu nhi</button>
+                                <button class="answer-btn" onclick="showAnswer1()">B. Tết Đoàn viên</button>
+                                <button class="answer-btn" onclick="showAnswer1()">C. Cả hai</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mặt sau trang 2 - Ảnh girlfriend -->
+                    <div class="page-back">
+                        <div class="girlfriend-page-content">
+                            <img src="assets/images/girlfriend-avatar-2.png" alt="Girlfriend 2" class="girlfriend-back-img" onerror="this.style.display='none'">
+                            <div class="girlfriend-text">🥮 Ngọt ngào như bánh trung thu 🥮</div>
+                            <div class="girlfriend-emoji">💖🏮💖</div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="card hidden" id="screen5">
-            <h2>Câu trả lời nào cũng đúng! ✨</h2>
-            <p class="text">Nhưng với anh, điều đặc biệt nhất là...</p>
-            <p class="romantic">Được ngắm trăng cùng em - cô gái Cancer xinh đẹp sinh ngày 26/06 🦀💖</p>
-            <div class="emoji">💖🌙💖</div>
-            <button class="btn" onclick="nextScreen()">Aww... tiếp tục nào! 😍</button>
-        </div>
+                <!-- Page 3: Answer 1 -->
+                <div class="page" data-page="3">
+                    <div class="page-front">
+                        <div class="page-content">
+                            <div class="page-header">Trang 3</div>
+                            <div class="text-content">
+                                <div class="line answer-title">Đúng rồi! 🎉</div>
+                                <div class="line">Tết Trung Thu vừa là</div>
+                                <div class="line highlight">Tết Thiếu nhi</div>
+                                <div class="line">vừa là</div>
+                                <div class="line highlight">Tết Đoàn viên!</div>
+                                <div class="line romantic">Giống như em -</div>
+                                <div class="line romantic">vừa đáng yêu như trẻ con,</div>
+                                <div class="line romantic">vừa khiến anh muốn</div>
+                                <div class="line romantic">ở bên mãi mãi 💕</div>
+                                <button class="next-btn" onclick="nextPage()">Tiếp theo →</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mặt sau trang 3 - Ảnh girlfriend -->
+                    <div class="page-back">
+                        <div class="girlfriend-page-content">
+                            <img src="assets/images/girlfriend-avatar-3.png" alt="Girlfriend 3" class="girlfriend-back-img" onerror="this.style.display='none'">
+                            <div class="girlfriend-text">🌙 Xinh như chị Hằng Nga 🌙</div>
+                            <div class="girlfriend-emoji">🧚‍♀️✨🧚‍♀️</div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="card hidden" id="screen6">
-            <h2>Câu cuối cùng! 🌟</h2>
-            <p class="question">Nếu anh mời em đi ngắm trăng Trung Thu, em sẽ chọn địa điểm nào?</p>
-            <button class="btn-option" onclick="showFinalAnswer()">Nơi yên tĩnh, chỉ có hai ta</button>
-            <button class="btn-option" onclick="showFinalAnswer()">Chỗ đông vui, có nhiều đèn lồng</button>
-            <button class="btn-option" onclick="showFinalAnswer()">Bất cứ đâu, miễn là cùng anh</button>
-        </div>
+                <!-- Page 4: Question 2 -->
+                <div class="page" data-page="4">
+                    <div class="page-front">
+                        <div class="page-content">
+                            <div class="page-header">Trang 4</div>
+                            <div class="text-content">
+                                <div class="line question-title">Câu hỏi 2 🏮</div>
+                                <div class="line question">Điều gì làm Trung Thu</div>
+                                <div class="line question">trở nên đặc biệt?</div>
+                                <button class="answer-btn" onclick="showAnswer2()">A. Bánh ngon</button>
+                                <button class="answer-btn" onclick="showAnswer2()">B. Trăng tròn</button>
+                                <button class="answer-btn" onclick="showAnswer2()">C. Ở bên người thương</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mặt sau trang 4 - Ảnh girlfriend -->
+                    <div class="page-back">
+                        <div class="girlfriend-page-content">
+                            <img src="assets/images/girlfriend-avatar-4.png" alt="Girlfriend 4" class="girlfriend-back-img" onerror="this.style.display='none'">
+                            <div class="girlfriend-text">🏮 Rạng rỡ như đèn lồng 🏮</div>
+                            <div class="girlfriend-emoji">🎋💕🎋</div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="card hidden" id="screen7">
-            <h1>💕 Dành tặng em yêu 💕</h1>
-            <p class="text">Em ơi, dù câu trả lời của em là gì thì anh cũng chỉ muốn nói rằng...</p>
-            <p class="romantic big">"Trăng tròn đêm Trung Thu có đẹp đến mấy, cũng không bằng nụ cười của em trong mắt anh 🌙✨"</p>
-            <p class="text">Chúc em - cô Cancer đáng yêu của anh - một mùa Trung Thu thật ngọt ngào!</p>
-            <div class="emoji">🦀💖🌙🥮🏮✨</div>
-            <button class="btn" onclick="restart()">Chơi lại nha! 💕</button>
+                <!-- Page 5: Answer 2 -->
+                <div class="page" data-page="5">
+                    <div class="page-front">
+                        <div class="page-content">
+                            <div class="page-header">Trang 5</div>
+                            <div class="text-content">
+                                <div class="line answer-title">Đều đúng! ✨</div>
+                                <div class="line">Nhưng với anh,</div>
+                                <div class="line">điều đặc biệt nhất là:</div>
+                                <div class="line romantic big">Được ngắm trăng cùng em</div>
+                                <div class="line romantic big">- cô gái Cancer xinh đẹp</div>
+                                <div class="line romantic big">sinh ngày 26/06 🦀💖</div>
+                                <div class="emoji-small">💖🌙💖</div>
+                                <button class="next-btn" onclick="nextPage()">Tiếp tục →</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mặt sau trang 5 - Ảnh girlfriend mix -->
+                    <div class="page-back">
+                        <div class="girlfriend-page-content double">
+                            <img src="assets/images/girlfriend-avatar-1.png" alt="Girlfriend Mix 1" class="girlfriend-back-img small" onerror="this.style.display='none'">
+                            <img src="assets/images/girlfriend-avatar-2.png" alt="Girlfriend Mix 2" class="girlfriend-back-img small" onerror="this.style.display='none'">
+                            <div class="girlfriend-text">🦀 Cancer xinh đẹp 26/06 🦀</div>
+                            <div class="girlfriend-emoji">💖🌙🥮🏮✨</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page 6: Final Question -->
+                <div class="page" data-page="6">
+                    <div class="page-front">
+                        <div class="page-content">
+                            <div class="page-header">Trang 6</div>
+                            <div class="text-content">
+                                <div class="line question-title">Câu cuối! 🌟</div>
+                                <div class="line question">Nếu anh rủ em ngắm trăng,</div>
+                                <div class="line question">em chọn đâu?</div>
+                                <button class="answer-btn small" onclick="showFinalAnswer()">A. Nơi yên tĩnh</button>
+                                <button class="answer-btn small" onclick="showFinalAnswer()">B. Chỗ đông vui</button>
+                                <button class="answer-btn small" onclick="showFinalAnswer()">C. Đâu cũng được</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mặt sau trang 6 - Ảnh girlfriend mix -->
+                    <div class="page-back">
+                        <div class="girlfriend-page-content double">
+                            <img src="assets/images/girlfriend-avatar-3.png" alt="Girlfriend Mix 3" class="girlfriend-back-img small" onerror="this.style.display='none'">
+                            <img src="assets/images/girlfriend-avatar-4.png" alt="Girlfriend Mix 4" class="girlfriend-back-img small" onerror="this.style.display='none'">
+                            <div class="girlfriend-text">🌟 Cùng anh ngắm trăng 🌟</div>
+                            <div class="girlfriend-emoji">🌙💕🌙</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page 7: Final Message -->
+                <div class="page" data-page="7">
+                    <div class="page-front">
+                        <div class="page-content">
+                            <div class="page-header">Trang 7</div>
+                            <div class="text-content">
+                                <div class="line final-title">💕 Dành tặng em 💕</div>
+                                <div class="line">Em ơi, dù em trả lời gì</div>
+                                <div class="line">anh cũng chỉ muốn nói:</div>
+                                <div class="line quote">"Trăng tròn đêm Trung Thu</div>
+                                <div class="line quote">có đẹp đến mấy,</div>
+                                <div class="line quote">cũng không bằng</div>
+                                <div class="line quote">nụ cười em 🌙✨"</div>
+                                <div class="line">Chúc em mùa Trung Thu</div>
+                                <div class="line">thật ngọt ngào!</div>
+                                <div class="emoji-small finale">🦀💖🌙🥮</div>
+                                <button class="restart-btn" onclick="restart()">Đọc lại 💕</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mặt sau trang 7 - Ảnh girlfriend tất cả -->
+                    <div class="page-back">
+                        <div class="girlfriend-page-content finale">
+                            <div class="girlfriend-grid">
+                                <img src="assets/images/girlfriend-avatar-1.png" alt="All 1" class="girlfriend-back-img mini" onerror="this.style.display='none'">
+                                <img src="assets/images/girlfriend-avatar-2.png" alt="All 2" class="girlfriend-back-img mini" onerror="this.style.display='none'">
+                                <img src="assets/images/girlfriend-avatar-3.png" alt="All 3" class="girlfriend-back-img mini" onerror="this.style.display='none'">
+                                <img src="assets/images/girlfriend-avatar-4.png" alt="All 4" class="girlfriend-back-img mini" onerror="this.style.display='none'">
+                            </div>
+                            <div class="girlfriend-text">💕 Em yêu của anh mãi mãi 💕</div>
+                            <div class="girlfriend-emoji">🦀💖🌙🥮🏮✨</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation controls -->
+            <div class="book-nav">
+                <button class="nav-btn" id="prevBtn" onclick="prevPage()" disabled>◀</button>
+                <span class="page-indicator" id="pageIndicator">1/7</span>
+                <button class="nav-btn" id="nextBtn" onclick="nextPage()">▶</button>
+            </div>
         </div>
     </div>
 
